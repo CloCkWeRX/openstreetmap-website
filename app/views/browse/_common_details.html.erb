@@ -24,9 +24,9 @@
 </div>
 
 <% if @type == "node" and common_details.visible? %>
-<div class="details geo">
+<div class="details geo" typeof="geo">
   <%= t 'browse.location' %>
-  <%= link_to(content_tag(:span, number_with_delimiter(common_details.lat), :class => "latitude") + ", " + content_tag(:span, number_with_delimiter(common_details.lon), :class => "longitude"), {:controller => 'site', :action => 'index', :lat => h(common_details.lat), :lon => h(common_details.lon), :zoom => "18"}) %>
+  <%= link_to(content_tag(:span, number_with_delimiter(common_details.lat), {class: "latitude", property: 'latitude'}) + ", " + content_tag(:span, number_with_delimiter(common_details.lon), {class: "longitude", property: 'longitude'}), {:controller => 'site', :action => 'index', :lat => h(common_details.lat), :lon => h(common_details.lon), :zoom => "18"}) %>
 </div>
 <% end %>
 

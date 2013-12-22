@@ -1,12 +1,13 @@
 <% set_title(t("browse.#{@type}.title", :name => printable_name(@feature))) %>
 
-<h2>
-  <a class="geolink" href="<%= root_path %>"><span class="icon close"></span></a>
-  <%= t("browse.#{@type}.title", :name => printable_name(@feature)) %>
-</h2>
+<div vocab="http://schema.org/" typeof="#{schema_org_typeof(@feature)}">
+  <h2>
+    <a class="geolink" href="<%= root_path %>"><span class="icon close"></span></a>
+    <span itemprop="name"><%= t("browse.#{@type}.title", :name => printable_name(@feature)) %></span>
+  </h2>
 
-<%= render :partial => @type, :object => @feature %>
-
+  <%= render :partial => @type, :object => @feature %>
+</div>
 <div class='secondary-actions'>
   <%= link_to(t('browse.download_xml'), :controller => @type, :action => "read") %>
   &middot;
